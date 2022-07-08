@@ -5,8 +5,12 @@ Personal Notes and references on SQL. Taken from various places on the internet.
 ## Table of Contents
 * [Window Functions](#window-functions)
 
- 
-Here is a good [explanation](https://leetcode.com/problems/find-the-team-size/) of the differences.
+
+## Window Functions
+
+* `group by` will compress the result, `partition by` will not
+
+Here is an example [LeetCode_Easy](https://leetcode.com/problems/find-the-team-size/).
 
 
 ```text
@@ -55,5 +59,9 @@ Employees with Id 5,6 are part of a team with team_id = 9.
 ```
 
 ```SQL
-SELECT, INSERT, UPDATE, DELETE, MERGE, CALL, EXPLAIN PLAN, LOCK TABLE
+SELECT 
+    employee_id,
+    COUNT(employee_id) OVER (partition by team_id) AS team_size
+
+FROM Employee
 ``
