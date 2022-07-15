@@ -4,6 +4,7 @@ Personal Notes and references on SQL. Taken from various places on the internet.
 
 ## Table of Contents
 * [Window Functions](#window-functions)
+* [Others](#others)
 
 
 ## Window Functions
@@ -217,3 +218,6 @@ WHERE
     a.followee = b.follower
 GROUP BY 1
 ```
+
+## Others
+* Use `date_format`(**trans_date**,'%Y-%m')to extract month from year-month-day
