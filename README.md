@@ -221,3 +221,4 @@ GROUP BY 1
 
 ## Others
 * Use `date_format`(**trans_date**,'%Y-%m')to extract month from year-month-day
+* Calculate the result under some circumstances using `SUM(IF(state = 'approved',amount,0))`
