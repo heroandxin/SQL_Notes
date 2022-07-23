@@ -4,14 +4,14 @@ Personal Notes and references on SQL. Taken from various places on the internet.
 
 ## Table of Contents
 * [Window Functions](#window-functions)
-* [Self Join](#Self Join)
-* [Union All](#Union All)
+* [Self Join](#Self-Join)
+* [Union All](#Union-All)
 * [Others](#others)
 
 
 ## Window Functions
 
-* `group by` will compress the result, `partition by` will not
+* `GROUP BY` will compress the result, `PARTITION BY` will not
 
 Here is an example [LeetCode_1303_Easy](https://leetcode.com/problems/find-the-team-size/).
 
@@ -144,7 +144,7 @@ HAVING COUNT(event_type) > 1
 
 ## Self Join
 
-* Sometimes using `where in` **subquery** can get the same results
+* Sometimes using `WHERE IN` **subquery** can get the same results
 
 Here is an example [LeetCode_641_Medium](https://leetcode.com/problems/second-degree-follower/).
 
@@ -191,7 +191,7 @@ User Bob has 2 followers. Bob is a second-degree follower because he follows Ali
 User Donald has 1 follower. Donald is a second-degree follower because he follows Bob, so we include him in the result table.
 User Alice has 1 follower. Alice is not a second-degree follower because she does not follow anyone, so we don not include her in the result table.
 ```
-Solution 1 using `where in` **subquery**:
+Solution 1 using `WHERE IN` **subquery**:
 
 ```SQL
 SELECT 
@@ -330,5 +330,5 @@ HAVING approved_count <> 0 or chargeback_count <> 0
 ```
 
 ## Others
-* Use `**date_format**`(trans_date,'%Y-%m')to extract month from year-month-day
-* Calculate the result under some circumstances using `SUM(**IF**(state = 'approved',amount,0))`
+* Use `DATE_FORMAT`(trans_date,'%Y-%m')to extract month from year-month-day
+* Calculate the result under some circumstances using `SUM(IF(state = 'approved',amount,0))`
