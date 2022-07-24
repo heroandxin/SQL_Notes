@@ -142,6 +142,31 @@ GROUP BY business_id
 HAVING COUNT(event_type) > 1
 ```
 
+* Adding **rows # preceding** can creat the moving window
+
+Here is an example [LeetCode_1321_Medium](https://leetcode.com/problems/restaurant-growth/).
+
+```SQL
+SELECT
+    *
+FROM
+    (SELECT
+        visited_on,
+        SUM(amount) OVER(ORDER BY visited_on rows 6 preceding) AS amount,
+        ROUND(AVG(amount) OVER(ORDER BY visited_on rows 6 preceding),2) AS average_amount
+    FROM
+        (SELECT
+            visited_on,
+            SUM(amount) AS amount
+        FROM
+            Customer
+        GROUP BY 
+            visited_on) t1
+     ) t2
+WHERE
+    datediff(visited_on, (SELECT MIN(visited_on) FROM Customer)) >= 6
+```
+
 ## Self Join
 
 * Sometimes using `WHERE IN` **subquery** can get the same results
