@@ -430,3 +430,4 @@ HAVING approved_count <> 0 or chargeback_count <> 0
 ## Others
 * Use `DATE_FORMAT`(trans_date,'%Y-%m')to extract month from year-month-day
 * Calculate the result under some circumstances using `SUM(IF(state = 'approved',amount,0))`
+* Get max value based on case when statement using expression like `MAX(CASE WHEN ... THEN ... END`
