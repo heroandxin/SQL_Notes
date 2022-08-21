@@ -433,3 +433,11 @@ HAVING approved_count <> 0 or chargeback_count <> 0
 * Get max value based on case when statement using expression like `MAX(CASE WHEN ... THEN ... END`
     
     Here is an example [StrataScratch:_Users By Average Session Time](https://platform.stratascratch.com/coding/10352-users-by-avg-session-time?code_type=3/).
+* Use `LAG()` function to calculate month-over-month percentage difference
+    Syntax of Lag function:
+    
+    ```SQL
+    LAG (scalar_expression [,offset] [,default])  
+    OVER ( [ partition_by_clause ] order_by_clause )
+    ```
+    Here is an example [StrataScratch:_Monthly Percentage Difference](https://platform.stratascratch.com/coding/10319-monthly-percentage-difference?code_type=3/).
