@@ -3,8 +3,9 @@
 Personal Notes and references on SQL. Taken from various places on the internet. (keep updating)
 
 ## Table of Contents
-* [Window Functions](#window-functions)
-* [CTEs](#ctes)
+* [Window Functions](#Window-functions)
+* [Subquery](#Subquery)
+* [CTEs](#Ctes)
 * [Self Join](#Self-Join)
 * [Union All](#Union-All)
 * [Others](#others)
@@ -168,6 +169,26 @@ WHERE
     datediff(visited_on, (SELECT MIN(visited_on) FROM Customer)) >= 6
     
 ```
+
+## Subquery
+* In sorting problems, use subqueries instead if not allowed to use window functions
+```SQL
+SELECT first_name as employee_name, department , salary 
+FROM employee  
+WHERE salary in (select max(salary) from employee group by department);
+```
+```SQL
+WITH ranked_salary AS(
+SELECT 
+    department, first_name, salary,
+    dense_rank() over(PARTITION BY department ORDER BY salary DESC) AS rnk
+FROM employee
+)
+SELECT department, first_name AS employee_name, salary
+FROM ranked_salary
+WHERE rnk = 1
+```
+
 
 ## CTEs
 * A recursive CTE is a CTE that has a subquery which refers to the CTE name itself. The following illustrates the syntax of a recursive CTE
