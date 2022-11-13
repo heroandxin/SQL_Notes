@@ -4,6 +4,7 @@ Personal Notes and references on SQL. Taken from various places on the internet.
 
 ## Table of Contents
 * [Window Functions](#window-functions)
+* [CTEs](#ctes)
 * [Self Join](#Self-Join)
 * [Union All](#Union-All)
 * [Others](#others)
@@ -165,7 +166,23 @@ FROM
      ) t2
 WHERE
     datediff(visited_on, (SELECT MIN(visited_on) FROM Customer)) >= 6
+    
 ```
+
+## CTEs
+* A recursive CTE is a CTE that has a subquery which refers to the CTE name itself. The following illustrates the syntax of a recursive CTE
+
+```SQL
+WITH RECURSIVE cte_name AS (
+    initial_query  -- anchor member
+    UNION ALL
+    recursive_query -- recursive member that references to the CTE name
+)
+SELECT * FROM cte_name;
+```
+Here is an example [StrataScratch:Reviews of Categories](https://platform.stratascratch.com/coding/10049-reviews-of-categories?tabname=discussion&code_type=3/).
+
+
 
 ## Self Join
 
